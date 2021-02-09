@@ -1,17 +1,34 @@
-import React from 'react';
+// Libraries
+import { ReactRelayContext } from 'react-relay';
+import { useContext } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+// Providers and components
+import { ChakraProvider } from '@chakra-ui/react';
+import { withData } from './relay/withData';
+
+// Theme
+import { ColorModeScript } from '@chakra-ui/react';
+import theme from './theme';
+
+// Main app component
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+// Styles
+import './index.sass';
+
+// Redux
+import { Provider } from 'react-redux';
+import { sessionService } from 'redux-react-session';
+import store from './redux/store';
+
+sessionService.initSessionService(store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <ChakraProvider>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </ChakraProvider>,
+    document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,0 +1,138 @@
+.chat-list
+    width: 90%
+    margin: auto
+    
+.chat-item 
+    width: 100%
+    display: inline-flex
+    align-items: center
+    margin: 20px 0
+
+.chat-avatar,
+.chat-info
+    margin-right: 4%
+
+.chat-displayname,
+.chat-last-message
+    display: block
+
+.chat-displayname
+    font-weight: bold
+
+.badge-online,
+.badge-busy,
+.badge-idle,
+.badge-offline
+    display: block
+    position: absolute
+    bottom: 0
+    right: 0
+    height: 5px
+    width: 5px
+    padding: 5px
+    border-radius: 50%
+    border: 2px solid white
+
+.badge-offline
+    background-color: grey
+
+.badge-idle
+    background-color: yellow
+
+.badge-busy
+    background-color: red
+
+.badge-online
+    background-color: green
+
+.badge-messages
+    display: block
+    position: absolute
+    top: 0
+    right: 0
+    height: 20px
+    font-size: 15px
+    text-align: center
+    border-radius: 40px
+    background: #7289da
+
+.count
+    display: block
+    min-width: 20px
+    padding: 0 3px
+    color: white
+
+/* Chat Panel */
+.chat-bubble
+    display: flex
+    margin-bottom: 25px
+    width: 100%
+
+.message-body
+    margin-left: 10px
+
+.message-body[own="true"]
+    text-align: right
+    margin-left: auto
+
+.message-content
+    background-color: #e5e9f2
+    padding: 7px 18px
+    border-radius: 0 10px 10px 10px
+    display: block
+    margin-top: 5px
+
+.message-content[colormode="dark"]
+    background-color: #999
+    padding: 7px 18px
+    border-radius: 0 10px 10px 10px
+    display: block
+    margin-top: 5px
+    
+.message-content[own="true"]
+    background-color: #7289da
+    color: white
+    border-radius: 10px 10px 0 10px
+
+.message-date
+    font-size: 11px
+    display: block
+    color: #777
+
+/* Chat input */
+.input-container
+    width: 90%
+    min-height: 56px
+    position: fixed
+    z-index: 9999
+    bottom: 0
+    left: 0
+    right: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    -webkit-box-align: center
+    -webkit-box-pack: center
+    text-align: center
+    margin: auto
+
+.chat-input
+    border: none!important
+
+.chat-input[colormode="dark"]
+    color: #eee!important
+
+.chat-input::placeholder
+    color: #555
+
+.chat-input[colormode="dark"]::placeholder
+    color: #888
+
+.chat-button
+    font-size: 28px
+    color: #7289da
+
+.check
+    display: inline-block
+    margin-right: 10px
+    color: #7289da
