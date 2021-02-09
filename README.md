@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://dot.2lstudios.dev/" target="blank"><img src="https://i.imgur.com/JnE3YKO.png" width="160" alt="Dot Logo" /></a>
-  <h1 align="center">Dot (Client)</h1>
+  <h1 align="center">Dot (Web Client)</h1>
 </p>
 
   <p align="center">A free, customizable, reliable and secure messaging application to meet your daily needs.</p>
@@ -22,7 +22,6 @@
     <img height="42px" src="https://cdn.iconscout.com/icon/free/png-512/travis-1-283376.png" /> 
     <img height="42px" src="https://wipdeveloper.com/posts/2017/01/images/yarn-kitten1.png" />
     <img height="42px" src="https://cdn.worldvectorlogo.com/logos/prettier-1.svg"/>
-    <img height="42px" src="https://cdn.icon-icons.com/icons2/2148/PNG/512/nextjs_icon_132160.png"/> 
     <img height="42px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/512px-React.svg.png"/>
     <img height="42px" src="https://relay.dev/img/relay.svg">
     <img height="42px" src="https://pablomagaz.com/content/images/2017/08/redux-2.svg">
@@ -32,7 +31,7 @@
 
 ## 📝 Description
 
-[Dot](https://dot.2lstudios.dev) It is a real-time messaging application designed to offer the user confidence, security, privacy and more than just sending messages. This is the web-client that allows the user to use the application from the browser.
+[Dot](https://dotmsn.com) It is a real-time messaging application designed to offer the user confidence, security, privacy and more than just sending messages. This is the web-client that allows the user to use the application from the browser.
 
 ## 📦 Stack
 
@@ -43,7 +42,6 @@
 -   [Travis](https://travis-ci.org/)
 -   [Yarn](https://yarnpkg.com/)
 -   [Prettier](https://prettier.io/)
--   [Next.js](https://nextjs.org/)
 -   [React.js](https://reactjs.org/)
 -   [Relay](https://relay.dev/)
 -   [Redux.js](https://redux.js.org/)
@@ -53,19 +51,20 @@
 
 ```bash
 $ yarn install
+$ yarn relay
 ```
 
 ## 🚀 Running the app
 
 ```bash
 # development
-$ yarn dev
+$ yarn start
 
 # build (compile)
 $ yarn build
 
-# production mode
-$ yarn start
+# build relay scripts (graphql)
+$ yarn relay
 ```
 
 ## ⚙️ Test
@@ -73,12 +72,6 @@ $ yarn start
 ```bash
 # unit tests
 $ yarn test
-
-# e2e tests
-$ yarn test:e2e
-
-# test coverage
-$ yarntest:cov
 ```
 
 ## ❤️ Support
