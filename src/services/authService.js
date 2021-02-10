@@ -43,3 +43,13 @@ export const login = (payload) => {
 export const logout = () => {
     return new Promise((resolve) => setTimeout(resolve, 1000));
 };
+
+export const validate = (token) => {
+    return new Promise(async (resolve) => {
+        const request = await fetch(
+            'http://localhost:4000/auth/validate?token=' + token,
+        );
+        const data = await request.json();
+        resolve(data.valid);
+    });
+};

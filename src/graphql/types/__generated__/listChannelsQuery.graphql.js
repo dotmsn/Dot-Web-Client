@@ -12,6 +12,7 @@ export type listChannelsQueryVariables = {||};
 export type listChannelsQueryResponse = {|
   +listChannels: $ReadOnlyArray<{|
     +_id: string,
+    +type: string,
     +participants: $ReadOnlyArray<{|
       +_id: string,
       +username: string,
@@ -29,6 +30,7 @@ export type listChannelsQuery = {|
 query listChannelsQuery {
   listChannels {
     _id
+    type
     participants {
       _id
       username
@@ -55,6 +57,13 @@ v1 = [
     "plural": true,
     "selections": [
       (v0/*: any*/),
+      {
+        "alias": null,
+        "args": null,
+        "kind": "ScalarField",
+        "name": "type",
+        "storageKey": null
+      },
       {
         "alias": null,
         "args": null,
@@ -96,16 +105,16 @@ return {
     "selections": (v1/*: any*/)
   },
   "params": {
-    "cacheID": "36468deaecab717680fbb2329ef38d44",
+    "cacheID": "160a06adee2d79a7bae536e39493580f",
     "id": null,
     "metadata": {},
     "name": "listChannelsQuery",
     "operationKind": "query",
-    "text": "query listChannelsQuery {\n  listChannels {\n    _id\n    participants {\n      _id\n      username\n    }\n  }\n}\n"
+    "text": "query listChannelsQuery {\n  listChannels {\n    _id\n    type\n    participants {\n      _id\n      username\n    }\n  }\n}\n"
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'd44ef2bb82ba5dea39b27495a43cd3a2';
+(node/*: any*/).hash = 'e8a33c15595dfc7a564ffe52e65bc36f';
 
 module.exports = node;

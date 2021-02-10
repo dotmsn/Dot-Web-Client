@@ -1,12 +1,36 @@
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
+// Relay
+import { QueryRenderer } from "react-relay";
+import { initEnvironment } from "../../relay/environment";
+
+// GraphQL
+import { currentUserQuery } from "../../graphql"
+
+// Initialization
+const environment = initEnvironment();
+
 const ProtectedRoute = ({ Component, authenticated, ...props }) => (
     <Route
         {...props}
         render={(props) =>
             authenticated ? (
-                <Component {...props} />
+                <QueryRenderer
+                    environment={environment}
+                    query={currentUserQuery}
+                    render={({error, props}) => {
+                        if (error) {
+                            return <div>Error, {error.message}</div>;
+                        }
+
+                        if (!props) {
+                            return <div>Loading...</div>;
+                        }
+
+                        return <Component user={props.currentUser} {...props} />
+                    }}
+                    />
             ) : (
                 <Redirect
                     to={{

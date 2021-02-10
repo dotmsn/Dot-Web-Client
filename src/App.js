@@ -14,7 +14,7 @@ import Welcome from './pages/Welcome.jsx';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-function App({ authenticated, checked }) {
+function App({ authenticated, checked, user }) {
     return (
         <BrowserRouter>
             {checked && (
@@ -36,6 +36,7 @@ function App({ authenticated, checked }) {
                         authenticated={authenticated}
                         exact
                         Component={Chats}
+                        user={user}
                     />
                     <ProtectedRoute
                         path="/contacts"
