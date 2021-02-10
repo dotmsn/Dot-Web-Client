@@ -1,5 +1,6 @@
 import Brand from '../components/layout/Brand';
 import HeroLogo from '../components/layout/HeroLogo';
+import { Redirect } from 'react-router-dom';
 
 export default function Welcome() {
     return (
@@ -12,6 +13,8 @@ export default function Welcome() {
                 src="/logo.png"
             />
             <Brand />
+
+            <Redirect to="/chats" />
         </div>
     );
 }

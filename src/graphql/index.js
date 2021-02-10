@@ -1,5 +1,5 @@
 import _createUserMutation from './types/createUserMutation';
-import _getCurrentUserQuery from './types/getCurrentUserQuery';
+import _listChannelsQuery from './types/listChannelsQuery';
 
 export const createUserMutation = _createUserMutation;
-export const getCurrentUserQuery = _getCurrentUserQuery;
+export const listChannelsQuery = _listChannelsQuery;

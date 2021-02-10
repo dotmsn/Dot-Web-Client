@@ -19,7 +19,7 @@ function App({ authenticated, checked }) {
         <BrowserRouter>
             {checked && (
                 <div>
-                    <Route
+                    <ProtectedRoute
                         path="/"
                         exact
                         authenticated={authenticated}
