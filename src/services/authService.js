@@ -1,10 +1,21 @@
 import fetch from 'isomorphic-unfetch';
 import { commitMutation } from 'react-relay';
-import { createUserMutation } from '../graphql';
+import { createUserMutation, confirmUserMutation } from '../graphql';
 
 import { initEnvironment } from '../relay/environment';
 
 const environment = initEnvironment();
+
+export const verifyAccount = (token) => {
+    return new Promise((resolve, reject) => {
+        commitMutation(environment, {
+            mutation: confirmUserMutation,
+            variables: { token },
+            onCompleted: resolve,
+            onError: reject
+        })
+    })
+};
 
 export const register = (payload) => {
     return new Promise((resolve, reject) => {

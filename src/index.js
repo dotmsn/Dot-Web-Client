@@ -15,7 +15,7 @@ import { validate } from './services/authService';
 
 // Redux
 import { Provider } from 'react-redux';
-import { sessionService, } from 'redux-react-session';
+import { sessionService } from 'redux-react-session';
 import store from './redux/store';
 
 sessionService.initSessionService(store, {

@@ -10,11 +10,12 @@ import Login from './pages/Login.jsx';
 import Profile from './pages/Profile.jsx';
 import Register from './pages/Register.jsx';
 import Welcome from './pages/Welcome.jsx';
+import Verify from './pages/Verify.jsx';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-function App({ authenticated, checked, user }) {
+function App({ authenticated, checked }) {
     return (
         <BrowserRouter>
             {checked && (
@@ -31,12 +32,17 @@ function App({ authenticated, checked, user }) {
                         exact
                         Component={Channel}
                     />
+                    <Route
+                        path="/verify"
+                        authenticated={authenticated}
+                        exact
+                        component={Verify}
+                    />
                     <ProtectedRoute
                         path="/chats"
                         authenticated={authenticated}
                         exact
                         Component={Chats}
-                        user={user}
                     />
                     <ProtectedRoute
                         path="/contacts"

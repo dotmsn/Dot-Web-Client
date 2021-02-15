@@ -28,7 +28,10 @@ const ProtectedRoute = ({ Component, authenticated, ...props }) => (
                             return <div>Loading...</div>;
                         }
 
-                        return <Component user={props.currentUser} {...props} />
+                        if (!props.currentUser.confirmed)
+                            return <Redirect to="/verify"/>
+                        else
+                            return <Component user={props.currentUser} {...props} />
                     }}
                     />
             ) : (
