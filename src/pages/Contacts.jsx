@@ -1,6 +1,7 @@
+import EmptyPanel from "../components/layout/EmptyPanel";
 import Header from '../components/layout/Header';
 import Navbar from '../components/layout/Navbar';
-import ContactList from '../components/contacts/ContactList';
+// import ContactList from '../components/contacts/ContactList';
 
 export default function Contacts(pageProps) {
     const props = { ...pageProps, colormode: 'dark' };
@@ -9,9 +10,11 @@ export default function Contacts(pageProps) {
         <div>
             <Header title="Contacts" {...props} />
             <div className="container">
-                <ContactList {...props} />
+                <EmptyPanel title="No contacts" subtitle="Try adding new friends" icon="/icons/contacts.svg"/>
             </div>
             <Navbar {...props} />
         </div>
     );
 }
+
+//                 <ContactList {...props} />

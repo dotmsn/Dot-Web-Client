@@ -2,7 +2,7 @@ import { verifyAccount } from '../services/authService';
 import { useState, useEffect } from "react";
 import queryString from 'query-string';
 
-import VerifyResult from "../components/auth/VerifyResult";
+import EmptyPanel from "../components/layout/EmptyPanel";
 
 var errorStateValue, setErrorState;
 var successStateValue, setSuccessState;
@@ -45,20 +45,20 @@ export default function Verify({history, location}) {
             {
                 errorStateValue &&
                 (
-                    <VerifyResult title="Error while verifying" subtitle={errorStateValue} icon="/icons/error.svg"/>
+                    <EmptyPanel title="Error while verifying" subtitle={errorStateValue} icon="/icons/error.svg"/>
                 )
             }
 
             {
                 successStateValue &&
                 (
-                    <VerifyResult history={history} redirect="/" title="Verified Successfully" subtitle="Redirecting to the main site..." icon="/icons/check.svg"/>
+                    <EmptyPanel history={history} redirect="/" title="Verified Successfully" subtitle="Redirecting to the main site..." icon="/icons/check.svg"/>
                 )
             }
 
             {
                 noticeStateValue === true && (
-                    <VerifyResult title="Check your mail" subtitle="We sent the verification token" icon="/icons/mails.svg" />
+                    <EmptyPanel title="Check your mail" subtitle="We sent the verification token" icon="/icons/mails.svg" />
                 )
             }
         </div>

@@ -9,6 +9,8 @@ import Contacts from './pages/Contacts.jsx';
 import Login from './pages/Login.jsx';
 import Profile from './pages/Profile.jsx';
 import Register from './pages/Register.jsx';
+import Search from './pages/Search';
+import Settings from './pages/Settings';
 import Welcome from './pages/Welcome.jsx';
 import Verify from './pages/Verify.jsx';
 
@@ -45,6 +47,12 @@ function App({ authenticated, checked }) {
                         Component={Chats}
                     />
                     <ProtectedRoute
+                        path="/settings"
+                        authenticated={authenticated}
+                        exact
+                        Component={Settings}
+                    />
+                    <ProtectedRoute
                         path="/contacts"
                         authenticated={authenticated}
                         exact
@@ -61,6 +69,12 @@ function App({ authenticated, checked }) {
                         authenticated={authenticated}
                         exact
                         Component={Profile}
+                    />
+                    <ProtectedRoute
+                        path="/search"
+                        authenticated={authenticated}
+                        exact
+                        Component={Search}
                     />
                     <Route
                         path="/register"
