@@ -1,15 +1,34 @@
 import { Button } from '@chakra-ui/react';
 import styles from './profileactions.module.sass';
 
-function ProfileActions() {
+function ProfileActions({own}) {
     return (
         <div className={styles['profile-actions']}>
-            <Button className={styles['btn-add']} size="lg">
-                Add friend
-            </Button>
-            <Button className={styles['btn-send']} size="lg">
-                Send message
-            </Button>
+            {
+                !own && (
+                    <div>
+                        <Button className={styles['btn-primary']} size="lg">
+                            Add friend
+                        </Button>
+                        <Button className={styles['btn-secondary']} size="lg">
+                            Send message
+                        </Button>
+                    </div>
+                )
+            }
+
+            {
+                own && (
+                    <div>
+                        <Button className={styles['btn-primary']} size="lg">
+                            New post
+                        </Button>
+                        <Button className={styles['btn-secondari']} size="lg">
+                            Update profile
+                        </Button>
+                    </div>
+                )
+            }
         </div>
     );
 }

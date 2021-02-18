@@ -11,12 +11,12 @@ export default function Settings (props) {
             <Header title="Settings" {...props} />
 
             <div className="container">
-                <div class="settingContainer">
+                <div className="settingContainer">
                     <SettingsGroupItem Icon={AiOutlineUser} url="/settings/account" title="Account"/>
                     <SettingsGroupItem Icon={AiOutlineNotification} url="/settings/notifications" title="Notifications"/>
                     <SettingsGroupItem Icon={AiOutlineEye} url="/settings/appearence" title="Appearence"/>
                     <SettingsGroupItem Icon={AiOutlineLock} url="/settings/privacy" title="Privacy"/>
-                    <SettingsGroupItem Icon={AiOutlineInfoCircle} url="/settings/help" title="Help & Support"/>
+                    <SettingsGroupItem Icon={AiOutlineInfoCircle} url="/settings/support" title="Help & Support"/>
                 </div>
             </div>
 

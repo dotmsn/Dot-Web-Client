@@ -19,7 +19,7 @@ function Navbar({ colormode }) {
                 Icon={AiOutlineContacts}
             />
             <NavItem href="/search" label="Search" Icon={AiOutlineSearch} />
-            <NavItem href="/profile" label="Profile" Icon={AiOutlineProfile} />
+            <NavItem href="/me" label="Profile" Icon={AiOutlineProfile} />
             <NavItem
                 href="/settings"
                 label="Settings"

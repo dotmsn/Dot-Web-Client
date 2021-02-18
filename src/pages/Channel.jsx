@@ -5,7 +5,7 @@ import Chat from '../components/chat/Chat';
 export default function Channel(props) {
     return (
         <div>
-            <Header title="Sammwy" subtitle="Online" />
+            <Header title="Sammwy" subtitle="Online" {...props} />
             <div className="container">
                 <Chat {...props} />
             </div>

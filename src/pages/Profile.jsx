@@ -4,23 +4,56 @@ import Profile from '../components/profile/Profile';
 import ProfileActions from '../components/profile/ProfileActions';
 import ProfileGallery from '../components/profile/ProfileGallery';
 
-export default function ProfilePage(pageProps) {
-    const props = { ...pageProps, colormode: 'dark' };
+import { QueryRenderer } from 'react-relay';
+import { fetchUserQuery } from '../graphql';
+import { initEnvironment } from '../relay/environment.js';
+
+const environment = initEnvironment();
+
+export default function ProfilePage({user, ...props}) {
+    const username = window.location.pathname.split("/")[1].split("@")[1];
+    console.log("Fetching for user with username: " + username);
 
     return (
         <div>
-            <Header title="Sammwy's Profile" {...props} />
+            <Header title="Profile" {...props} />
 
-            <Profile
-                username="sammwy"
-                displayname="Samiwi melon"
-                status="Dot es la mejor aplicación de mensajes del mundo."
-                {...props}
+            <QueryRenderer
+                environment={environment}
+                query={fetchUserQuery}
+                variables={{username}}
+                render={({ error, result }) => {
+
+                    if (error) {
+                        const message = error.source.errors[0].message;
+                        console.error("An error has ocurred: " + message);
+                        return (
+                            <Profile
+                                displayname={"Unknown user"}
+                                username={username}
+                                status={message}
+                            />
+                        )
+                    }
+
+                    const fetchedUser = user;
+                    const { displayname, bio, id } = fetchedUser;
+
+                    return (
+                        <div>
+                            <Profile
+                                username={username}
+                                displayname={displayname || username}
+                                status={bio || "No bio provided"}
+                            />
+
+                            <ProfileActions own={user.id === id}  />
+                            <ProfileGallery />
+                        </div>
+                    )
+                }}
             />
-
-            <ProfileActions />
-            <ProfileGallery />
-            <Navbar {...props} />
+            <Navbar/>
         </div>
     );
 }

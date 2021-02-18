@@ -3,9 +3,7 @@ import Header from '../components/layout/Header';
 import Navbar from '../components/layout/Navbar';
 // import ContactList from '../components/contacts/ContactList';
 
-export default function Contacts(pageProps) {
-    const props = { ...pageProps, colormode: 'dark' };
-
+export default function Contacts(props) {
     return (
         <div>
             <Header title="Contacts" {...props} />

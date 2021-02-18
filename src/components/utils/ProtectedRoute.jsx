@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
+import LoadingPanel from "../layout/LoadingPanel"
+
 // Relay
 import { QueryRenderer } from "react-relay";
 import { initEnvironment } from "../../relay/environment";
@@ -11,10 +13,10 @@ import { currentUserQuery } from "../../graphql"
 // Initialization
 const environment = initEnvironment();
 
-const ProtectedRoute = ({ Component, authenticated, ...props }) => (
+const ProtectedRoute = ({ Component, authenticated, ...componentProps }) => (
     <Route
-        {...props}
-        render={(props) =>
+        {...componentProps}
+        render={(pageProps) =>
             authenticated ? (
                 <QueryRenderer
                     environment={environment}
@@ -25,20 +27,20 @@ const ProtectedRoute = ({ Component, authenticated, ...props }) => (
                         }
 
                         if (!props) {
-                            return <div>Loading...</div>;
+                            return <LoadingPanel/>;
                         }
 
                         if (!props.currentUser.confirmed)
                             return <Redirect to="/verify"/>
                         else
-                            return <Component user={props.currentUser} {...props} />
+                            return <Component user={props.currentUser} {...pageProps} {...props} />
                     }}
                     />
             ) : (
                 <Redirect
                     to={{
                         pathname: '/login',
-                        state: { from: props.location },
+                        state: { from: componentProps.location },
                     }}
                 />
             )

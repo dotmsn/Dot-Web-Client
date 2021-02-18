@@ -1,5 +1,5 @@
 // Providers and components
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Redirect } from 'react-router-dom';
 import ProtectedRoute from './components/utils/ProtectedRoute';
 
 // Pages
@@ -16,6 +16,7 @@ import Verify from './pages/Verify.jsx';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import HelpAndSupport from './pages/Settings/HelpAndSupport';
 
 function App({ authenticated, checked }) {
     return (
@@ -27,6 +28,12 @@ function App({ authenticated, checked }) {
                         exact
                         authenticated={authenticated}
                         Component={Welcome}
+                    />
+                    <ProtectedRoute
+                        path="/me"
+                        exact
+                        authenticated={authenticated}
+                        Component={({user}) => ( <Redirect to={'@' + user.username} /> )}
                     />
                     <Route
                         path="/channel"
@@ -53,6 +60,12 @@ function App({ authenticated, checked }) {
                         Component={Settings}
                     />
                     <ProtectedRoute
+                        path="/settings/support"
+                        authenticated={authenticated}
+                        exact
+                        Component={HelpAndSupport}
+                    />
+                    <ProtectedRoute
                         path="/contacts"
                         authenticated={authenticated}
                         exact
@@ -65,9 +78,8 @@ function App({ authenticated, checked }) {
                         component={Login}
                     />
                     <ProtectedRoute
-                        path="/profile"
+                        path="/@:username"
                         authenticated={authenticated}
-                        exact
                         Component={Profile}
                     />
                     <ProtectedRoute

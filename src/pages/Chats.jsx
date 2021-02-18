@@ -15,7 +15,7 @@ const environment = initEnvironment();
 const Chats = (pageProps) => {
     return (
         <div>
-            <Header title="Chats" />
+            <Header title="Chats" {...pageProps} />
             <div className="container">
                 <QueryRenderer
                     environment={environment}

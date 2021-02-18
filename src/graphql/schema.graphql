@@ -1,69 +1,76 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
 type Channel {
-    _id: ID!
-    participants: [User!]!
-    type: String!
+  _id: ID!
+  participants: [User!]!
+  type: String!
 }
 
 input CreateMessageInput {
-    channel: String!
-    content: String!
+  channel: String!
+  content: String!
 }
 
 input CreateUserInput {
-    email: String!
-    password: String!
-    username: String!
+  email: String!
+  password: String!
+  username: String!
 }
 
 input DeleteMessageInput {
-    id: String!
+  id: String!
 }
 
 input FetchMessageInput {
-    channel: String!
-    index: Float = 0
+  channel: String!
+  index: Float = 0
 }
 
 type Message {
-    _id: ID!
-    author: User!
-    channel: Channel!
-    content: String!
-    edited: Boolean
+  _id: ID!
+  author: User!
+  channel: Channel!
+  content: String!
+  edited: Boolean
 }
 
 type Mutation {
-    confirmUser(token: String!): User!
-    createDM(target: String!): Channel!
-    createMessage(payload: CreateMessageInput!): Message!
-    createUser(payload: CreateUserInput!): User!
-    deleteMessage(payload: DeleteMessageInput!): Message!
-    updateMessage(payload: UpdateMessageInput!): Message!
-    updateUser(payload: UpdateUserInput!): User!
+  confirmUser(token: String!): User!
+  createDM(target: String!): Channel!
+  createMessage(payload: CreateMessageInput!): Message!
+  createUser(payload: CreateUserInput!): User!
+  deleteMessage(payload: DeleteMessageInput!): Message!
+  updateMessage(payload: UpdateMessageInput!): Message!
+  updateUser(payload: UpdateUserInput!): User!
 }
 
 type Query {
-    currentUser: User!
-    fetchDM(target: String!): [Channel!]!
-    fetchMessages(payload: FetchMessageInput!): [Message!]!
-    fetchUnreadedMessages: [Message!]!
-    listChannels: [Channel!]!
+  currentUser: User!
+  fetchDM(target: String!): [Channel!]!
+  fetchMessages(payload: FetchMessageInput!): [Message!]!
+  fetchUnreadedMessages: [Message!]!
+  fetchUser(username: String!): User!
+  listChannels: [Channel!]!
 }
 
 input UpdateMessageInput {
-    content: String!
-    id: String!
+  content: String!
+  id: String!
 }
 
 input UpdateUserInput {
-    email: String
-    password: String
-    username: String
+  email: String
+  password: String
+  username: String
 }
 
 type User {
-    _id: ID!
-    confirm_token: String!
-    confirmed: Boolean!
-    username: String!
+  _id: ID!
+  bio: String
+  confirm_token: String!
+  confirmed: Boolean!
+  displayname: String
+  username: String!
 }
