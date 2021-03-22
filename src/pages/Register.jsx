@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 export default function Register(props) {
     return (
         <div>
-            <script src="https://www.google.com/recaptcha/api.js?render=6LccE00aAAAAAPQoyNh23LoAaCzzsF-YDj8IkgTw"></script>
-
             <Header title="Register" {...props} />
             <Title
                 title="Howdy, Welcome"

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import queryString from 'query-string';
 
 import EmptyPanel from "../components/layout/EmptyPanel";
+import SendMailButton from "../components/auth/SendMailButton";
 
 var errorStateValue, setErrorState;
 var successStateValue, setSuccessState;
@@ -38,7 +39,7 @@ export default function Verify({history, location}) {
             verifyAcc(token);
         else
             setNoticeState(true)
-    }, []);
+    }, [token]);
 
     return (
         <div>
@@ -58,7 +59,7 @@ export default function Verify({history, location}) {
 
             {
                 noticeStateValue === true && (
-                    <EmptyPanel title="Check your mail" subtitle="We sent the verification token" icon="/icons/mails.svg" />
+                    <EmptyPanel title="Check your mail" subtitle="We sent the verification token" icon="/icons/mails.svg" Button={(<SendMailButton />)} />
                 )
             }
         </div>
