@@ -19,7 +19,9 @@ export default function Message({ content, time, own, attachment, id }) {
           />
         )}
 
-        <span className={styles['time']}>{time}</span>
+        <span own={own} className={styles['time']}>
+          {time}
+        </span>
       </div>
     </div>
   );
