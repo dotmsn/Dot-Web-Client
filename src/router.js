@@ -10,6 +10,8 @@ import Register from './pages/auth/register';
 
 import Chat from './pages/messages/chat';
 
+import Profile from './pages/profile/profile';
+
 // Component
 export default function Router() {
   return (
@@ -28,6 +30,10 @@ export default function Router() {
 
         <Route exact path="/chat">
           <Chat />
+        </Route>
+
+        <Route exact path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </React.Fragment>

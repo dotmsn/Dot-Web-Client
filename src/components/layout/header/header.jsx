@@ -3,16 +3,30 @@ import styles from './header.module.sass';
 import { IconButton } from '@chakra-ui/button';
 import { BiArrowBack } from 'react-icons/bi';
 import { IoHelpOutline } from 'react-icons/io5';
+import { Text } from '@chakra-ui/react';
 
-export default function Header({ title, description }) {
+export default function Header({ title, description, ghost = 'false' }) {
   return (
-    <div className={styles['header']}>
-      <IconButton icon={<BiArrowBack className={styles['icon']} />} />
+    <div
+      className={styles['header']}
+      style={{
+        borderBottom: `${ghost === 'false' ? '1px solid #00000018' : ''}`,
+      }}
+    >
+      <IconButton
+        variant="ghost"
+        icon={<BiArrowBack className={styles['icon']} />}
+      />
       <div className={styles['container']}>
-        <span className={styles['title']}>{title}</span>
-        <span className={styles['description']}>{description}</span>
+        <Text className={styles['title']}>{title}</Text>
+        <Text mt={2} className={styles['description']}>
+          {description}
+        </Text>
       </div>
-      <IconButton icon={<IoHelpOutline className={styles['icon']} />} />
+      <IconButton
+        variant="ghost"
+        icon={<IoHelpOutline className={styles['icon']} />}
+      />
     </div>
   );
 }
