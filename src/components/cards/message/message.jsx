@@ -1,8 +1,8 @@
 import styles from './message.module.sass';
 
-export default function Message({ content, time, own, attachment }) {
+export default function Message({ content, time, own, attachment, id }) {
   return (
-    <div className={styles['message']}>
+    <div className={styles['message']} id={id}>
       <div own={own} className={styles['container']}>
         {content && (
           <span own={own} className={styles['content']}>

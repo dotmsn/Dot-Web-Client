@@ -21,6 +21,7 @@ export default class ChatInput extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.onSubmitMessage(this.state.input);
     this.setState({ input: '' });
   }
 
