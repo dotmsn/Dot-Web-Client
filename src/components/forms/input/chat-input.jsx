@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { IconButton, Input } from '@chakra-ui/react';
-import { AiOutlineSend, AiOutlineFile } from 'react-icons/ai';
+import { AiOutlineSend, AiOutlinePaperClip } from 'react-icons/ai';
 
 import styles from './chat-input.module.sass';
 
@@ -29,7 +29,9 @@ export default class ChatInput extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit} className={styles['wrapper']}>
-          <IconButton icon={<AiOutlineFile className={styles['button']} />} />
+          <IconButton
+            icon={<AiOutlinePaperClip className={styles['button']} />}
+          />
           <Input
             placeholder="Write your message..."
             onChange={this.handleInputChange}

@@ -3,7 +3,7 @@ import * as React from 'react';
 import ChatInput from '../../components/forms/input/chat-input';
 import Message from '../../components/cards/message/message';
 import Header from '../../components/layout/header/header';
-import { Center, Spinner } from '@chakra-ui/react';
+import { Badge, Center, Spinner } from '@chakra-ui/react';
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -90,7 +90,14 @@ export default class Login extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header title="Sammwy" description="Online" />
+        <Header
+          title="Sammwy"
+          description={
+            <Badge px={2} mt={1} variant="subtle" colorScheme="green">
+              Online
+            </Badge>
+          }
+        />
         {!this.state.fetched ? (
           <Center mt={20}>
             <Spinner />
