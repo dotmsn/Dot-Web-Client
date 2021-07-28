@@ -1,9 +1,14 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
-}
+import * as React from 'react';
 
-export default App;
+import Layout from './layout';
+import Router from './router';
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <Layout>
+        <Router />
+      </Layout>
+    );
+  }
+}
