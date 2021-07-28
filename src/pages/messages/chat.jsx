@@ -26,13 +26,13 @@ export default class Login extends React.Component {
           {
             id: '0',
             time: '15:31',
-            content: '👀 Hola.',
+            content: '👀 Hello.',
           },
 
           {
             id: '1',
             time: '15:33',
-            content: '👋 Hola. ¿Que haces?',
+            content: '👋 Hello. What do you do?',
             own: true,
           },
 
@@ -40,14 +40,14 @@ export default class Login extends React.Component {
             id: '2',
             time: '15:34',
             content:
-              '💬 Estoy probando Dot, la nueva aplicación de mensajería enfocada a la 🔒 privacidad.',
+              "💬 I'm testing Dot, the new 🔒 security and privacy-focused messaging app.",
           },
 
           {
             id: '3',
             time: '15:35',
             content:
-              '😮 ¡Que coincidencia! Estoy haciendo lo mismo, te comparto una 📷 foto de un gato.',
+              '😮 What a coincidence! I am doing the same, I share a 📷 photo of a cat.',
             own: true,
           },
 
@@ -61,7 +61,7 @@ export default class Login extends React.Component {
           {
             id: '5',
             time: '15:38',
-            content: 'ʕ•́ᴥ•̀ʔっ Owww, que mono ❤️.',
+            content: 'ʕ•́ᴥ•̀ʔっ Owww, how cute ❤️.',
           },
         ],
       });
