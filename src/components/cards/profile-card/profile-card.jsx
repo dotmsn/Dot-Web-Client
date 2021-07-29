@@ -12,7 +12,6 @@ export default function ProfileCard({ displayName, bio }) {
             size="lg"
             src="https://i.pinimg.com/originals/6f/d4/f7/6fd4f7991cada6e2fb560424981abff8.jpg"
           />
-
           <Box className={styles['details']}>
             <Text
               color="purple.400"

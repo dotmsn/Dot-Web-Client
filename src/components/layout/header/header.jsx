@@ -14,7 +14,8 @@ export default function Header({ title, description, ghost = 'false' }) {
       }}
     >
       <IconButton
-        variant="ghost"
+        variant="solid"
+        background="blackAlpha.200"
         icon={<BiArrowBack className={styles['icon']} />}
       />
       <div className={styles['container']}>
@@ -24,7 +25,8 @@ export default function Header({ title, description, ghost = 'false' }) {
         </Text>
       </div>
       <IconButton
-        variant="ghost"
+        variant="solid"
+        background="blackAlpha.200"
         icon={<IoHelpOutline className={styles['icon']} />}
       />
     </div>

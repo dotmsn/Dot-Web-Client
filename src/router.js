@@ -13,27 +13,27 @@ import Chat from './pages/messages/chat';
 import Profile from './pages/profile/profile';
 
 // Component
-export default function Router() {
+export default function Router(props) {
   return (
     <React.Fragment>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home {...props} />
         </Route>
 
         <Route exact path="/login">
-          <Login />
+          <Login {...props} />
         </Route>
         <Route exact path="/register">
-          <Register />
+          <Register {...props} />
         </Route>
 
         <Route exact path="/chat">
-          <Chat />
+          <Chat {...props} />
         </Route>
 
         <Route exact path="/profile">
-          <Profile />
+          <Profile {...props} />
         </Route>
       </Switch>
     </React.Fragment>
