@@ -6,26 +6,38 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "11",
     "@emotion/styled": "11",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "framer-motion": "4",
+    "graphql": "^15.5.1",
+    "graphql-tag": "^2.12.5",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
+    "react-relay": "^11.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "redux": "^4.1.0",
+    "redux-react-session": "^2.6.1",
+    "redux-thunk": "^2.3.0",
+    "relay-runtime": "^11.0.2",
     "sass": "^1.36.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "babel-plugin-relay": "^11.0.2",
+    "relay-compiler": "^11.0.2",
+    "relay-config": "^11.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier": "prettier --write \"./**/*.{js,jsx}\""
+    "prettier": "prettier --write \"./**/*.{js,jsx}\"",
+    "relay": "relay-compiler"
   },
   "eslintConfig": {
     "extends": [

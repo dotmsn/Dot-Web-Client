@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import {
   Alert,
   AlertIcon,
@@ -15,7 +16,7 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
 
@@ -48,15 +49,9 @@ export default class Login extends React.Component {
   async handleSubmit(event) {
     event.preventDefault();
 
-    // const form = this.state.form;
     this.setState({ fetching: true });
-
-    setTimeout(() => {
-      this.setState({
-        fetching: false,
-        success: 'La wea fome cualiau.',
-      });
-    }, 1000 * 2);
+    this.props.loginRequest(this.state.form);
+    this.props.history.push('/');
   }
 
   render() {
@@ -121,3 +116,5 @@ export default class Login extends React.Component {
     );
   }
 }
+
+export default Login;

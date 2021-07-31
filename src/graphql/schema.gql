@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AuthLoginDto {
+  email: String!
+  password: String!
+}
+
+input CreateUserDto {
+  displayName: String!
+  email: String!
+  password: String!
+}
+
+type FriendRequest {
+  _id: ID!
+  from: String!
+  to: String!
+}
+
+type Mutation {
+  acceptFriendRequest(request: String!): Boolean!
+  createFriendRequest(target: String!): FriendRequest!
+  createUser(payload: CreateUserDto!): User!
+  deleteFriendRequest(request: String!): Boolean!
+  login(payload: AuthLoginDto!): Session!
+  updatePassword(payload: UpdatePasswordDto!): User!
+  updateUser(payload: UpdateUserDto!): User!
+}
+
+type PublicProfile {
+  _id: ID!
+  bio: String
+  displayName: String!
+  publicKey: String!
+}
+
+type Query {
+  getCurrentUser: User!
+  getUserByID(id: String!): PublicProfile!
+  incomingFriendRequests: [FriendRequest!]!
+  outgoingFriendRequests: [FriendRequest!]!
+}
+
+type Session {
+  accessToken: String!
+  user: User!
+}
+
+input UpdatePasswordDto {
+  newPassword: String!
+  oldPassword: String!
+}
+
+input UpdateUserDto {
+  bio: String
+  displayName: String
+  email: String
+}
+
+type User {
+  _id: ID!
+  bio: String
+  displayName: String!
+  email: String!
+  friends: [PublicProfile!]!
+  privateKey: String!
+  publicKey: String!
+}
