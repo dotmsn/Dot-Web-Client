@@ -1,6 +1,8 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { login } from '../../actions/auth.actions';
 import {
   Alert,
   AlertIcon,
@@ -16,14 +18,20 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 
-class Login extends React.Component {
+class Login extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
     this.state = {
       fetching: false,
-      error: null,
       success: null,
+      error: null,
       form: {
         email: '',
         password: '',
@@ -46,12 +54,23 @@ class Login extends React.Component {
     });
   }
 
-  async handleSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
-
     this.setState({ fetching: true });
-    this.props.loginRequest(this.state.form);
-    this.props.history.push('/');
+
+    const { form } = this.state;
+    const { dispatch } = this.props;
+
+    dispatch(login(form.email, form.password))
+      .then(() => {
+        this.setState({ success: 'Logged successfully' });
+        setTimeout(() => {
+          this.props.history.push('/');
+        }, 1000 * 2);
+      })
+      .catch((e) => {
+        this.setState({ error: e.message || e.toString(), fetching: false });
+      });
   }
 
   render() {
@@ -117,4 +136,13 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+function mapStateToProps(state) {
+  const { isLoggedIn, error } = state.auth;
+  return {
+    isLoggedIn,
+    error,
+  };
+}
+
+const componentWithRouter = withRouter(Login);
+export default connect(mapStateToProps)(componentWithRouter);

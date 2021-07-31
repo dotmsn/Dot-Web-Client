@@ -27,9 +27,11 @@ const queryExecuter = (query, variables = {}) =>
   });
 
 export const register = (displayName, email, password) =>
-  mutationExecuter(Mutations.createUser, { displayName, email, password });
+  mutationExecuter(Mutations.createUser, {
+    payload: { displayName, email, password },
+  });
 
 export const login = (email, password) =>
-  mutationExecuter(Mutations.login, { email, password });
+  mutationExecuter(Mutations.login, { payload: { email, password } });
 
 export const verify = () => queryExecuter(Queries.getCurrentUser);

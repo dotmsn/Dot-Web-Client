@@ -15,27 +15,25 @@ import Profile from './pages/profile/profile';
 // Component
 export default function Router() {
   return (
-    <React.Fragment>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
+    <Switch>
+      <Route exact path="/">
+        <Home />
+      </Route>
 
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/register">
-          <Register />
-        </Route>
+      <Route exact path="/login">
+        <Login />
+      </Route>
+      <Route exact path="/register">
+        <Register />
+      </Route>
 
-        <Route exact path="/chat">
-          <Chat />
-        </Route>
+      <Route exact path="/chat">
+        <Chat />
+      </Route>
 
-        <Route exact path="/profile">
-          <Profile />
-        </Route>
-      </Switch>
-    </React.Fragment>
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
+    </Switch>
   );
 }

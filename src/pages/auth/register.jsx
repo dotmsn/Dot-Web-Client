@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+import { register } from '../../actions/auth.actions';
 import {
   Alert,
   AlertIcon,
@@ -15,7 +18,13 @@ import {
   Spinner,
 } from '@chakra-ui/react';
 
-export default class Register extends React.Component {
+class Register extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -49,20 +58,26 @@ export default class Register extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const form = this.state.form;
+    this.setState({ fetching: true });
+
+    const { form } = this.state;
+    const { dispatch } = this.props;
 
     if (form.password !== form.confirmPassword) {
       this.setState({ error: "Password didn't match." });
       return;
     }
 
-    this.setState({ fetching: true });
-    setTimeout(() => {
-      this.setState({
-        fetching: false,
-        success: 'Logged successfully.',
+    dispatch(register(form.displayName, form.email, form.password))
+      .then(() => {
+        this.setState({ success: 'Registered successfully' });
+        setTimeout(() => {
+          this.props.history.push('/login');
+        }, 1000 * 2);
+      })
+      .catch((e) => {
+        this.setState({ error: e.message || e.toString(), fetching: false });
       });
-    }, 1000 * 2);
   }
 
   render() {
@@ -149,3 +164,14 @@ export default class Register extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  const { isLoggedIn, error } = state.auth;
+  return {
+    isLoggedIn,
+    error,
+  };
+}
+
+const componentWithRouter = withRouter(Register);
+export default connect(mapStateToProps)(componentWithRouter);
