@@ -4,6 +4,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  SESSION_VALIDATED,
+  INVALID_SESSION,
 } from './types';
 import * as authService from '../services/auth.service';
 import extractError from '../utils/extractError';
@@ -45,6 +47,29 @@ export const login = (email, password) => (dispatch) => {
       const message = extractError(error);
       dispatch({
         type: LOGIN_FAIL,
+        payload: message,
+      });
+
+      return Promise.reject(message);
+    });
+};
+
+export const validateSession = () => (dispatch) => {
+  return authService
+    .verify()
+    .then((data) => {
+      const { user } = data.getCurrentUser;
+      dispatch({
+        type: SESSION_VALIDATED,
+        payload: user,
+      });
+
+      return Promise.resolve(user);
+    })
+    .catch((error) => {
+      const message = extractError(error);
+      dispatch({
+        type: INVALID_SESSION,
         payload: message,
       });
 

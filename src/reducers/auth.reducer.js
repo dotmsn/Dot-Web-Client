@@ -4,6 +4,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
+  INVALID_SESSION,
+  SESSION_VALIDATED,
 } from '../actions/types';
 
 const user = JSON.parse(localStorage.getItem('user'));
@@ -29,13 +31,12 @@ export default function AuthReducer(state = initialState, action) {
       return {
         ...state,
         isLoggedIn: true,
-        user: payload.user,
+        user: payload,
       };
     case LOGIN_FAIL:
       return {
         ...state,
         isLoggedIn: false,
-        user: payload.user,
         error: payload,
       };
     case LOGOUT:
@@ -43,6 +44,18 @@ export default function AuthReducer(state = initialState, action) {
         ...state,
         isLoggedIn: false,
         user: null,
+      };
+    case INVALID_SESSION:
+      return {
+        ...state,
+        isLoggedIn: false,
+        error: payload,
+      };
+    case SESSION_VALIDATED:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: payload,
       };
     default:
       return state;

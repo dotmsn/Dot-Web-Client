@@ -5,7 +5,6 @@ import {
   RecordSource,
   Store,
 } from 'relay-runtime';
-import { sessionService } from 'redux-react-session';
 
 const cache = new QueryResponseCache({
   size: 250,
@@ -20,9 +19,6 @@ async function fetchQuery(operation, variables = {}, cacheConfig) {
   const isQuery = operation.operationKind === 'query';
   const forceFetch = cacheConfig && cacheConfig.force;
   const fromCache = cache.get(queryID, variables);
-  const session = await sessionService.loadSession().catch(() => {
-    return {};
-  });
 
   if (isQuery && fromCache !== null && !forceFetch) {
     return fromCache;
@@ -32,7 +28,7 @@ async function fetchQuery(operation, variables = {}, cacheConfig) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + session.token,
+      Authorization: 'Bearer ' + localStorage.getItem('accessToken'),
       recaptcha: localStorage.getItem('captcha'),
     },
     body: JSON.stringify({
