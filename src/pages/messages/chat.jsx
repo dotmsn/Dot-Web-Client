@@ -26,42 +26,60 @@ export default class Login extends React.Component {
           {
             id: '0',
             time: '15:31',
-            content: '👀 Hello.',
+            content: '#  Header 1',
+          },
+
+          {
+            id: '999',
+            own: true,
+            time: '15:31',
+            content: '##  Header 2',
+          },
+
+          {
+            id: '99',
+            time: '15:31',
+            content: '###  Header 3',
+          },
+
+          {
+            id: '9',
+            own: true,
+            time: '15:31',
+            content: '####  Header 4',
+          },
+
+          {
+            id: '9',
+            time: '15:31',
+            content: '#####  Header 5',
           },
 
           {
             id: '1',
             time: '15:33',
-            content: '👋 Hello. What do you do?',
+            content: 'Testing **bold**',
             own: true,
           },
 
           {
             id: '2',
             time: '15:34',
-            content:
-              "💬 I'm testing Dot, the new 🔒 security and privacy-focused messaging app.",
-          },
-
-          {
-            id: '3',
-            time: '15:35',
-            content:
-              '😮 What a coincidence! I am doing the same, I share a 📷 photo of a cat.',
-            own: true,
-          },
-
-          {
-            id: '4',
-            time: '15:35',
-            attachment: 'https://pbs.twimg.com/media/Ez-AaifWYAIiFSQ.jpg',
-            own: true,
+            content: 'Now testing __italic__',
           },
 
           {
             id: '5',
             time: '15:38',
-            content: 'ʕ•́ᴥ•̀ʔっ Owww, how cute ❤️.',
+            own: true,
+            content: '> This is a quote',
+          },
+          {
+            id: '6',
+            time: '15:40',
+            own: false,
+            content:
+              'And this an emote ![](https://i.pinimg.com/originals/4f/d7/10/4fd710b5eda64424ca7d609e0d3141df.png) YEE!',
           },
         ],
       });

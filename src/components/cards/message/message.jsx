@@ -1,4 +1,5 @@
 import { Avatar } from '@chakra-ui/react';
+import ReactMarkdown from 'react-markdown';
 import styles from './message.module.sass';
 
 export default function Message({ content, time, own, attachment, id }) {
@@ -15,7 +16,9 @@ export default function Message({ content, time, own, attachment, id }) {
       <div own={own} className={styles['container']}>
         {content && (
           <span own={own} className={styles['content']}>
-            {content}
+            <ReactMarkdown className="message-container">
+              {content}
+            </ReactMarkdown>
 
             <span own={own} className={styles['time']}>
               {time}

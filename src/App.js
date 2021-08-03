@@ -32,7 +32,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.checked) {
+    if (true) {
       return (
         <Layout>
           <Router />
